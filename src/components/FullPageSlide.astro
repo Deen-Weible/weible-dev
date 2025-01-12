@@ -1,0 +1,84 @@
+---
+// FullPageSlide.astro
+---
+
+<style>
+  .slide {
+    /* width: 100vw; */
+    height: 85vh;
+    background-size: 25px 25px;
+    background-color: rgb(var(--gray-light));
+    background-image: linear-gradient(
+        to right,
+        rgb(221, 221, 221) 2px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgb(221, 221, 221) 1px, transparent 2px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    color: var(--black);
+    text-align: center;
+    font-size: 3rem; /* Adjust font size as needed */
+  }
+
+  p {
+    /* font-size: min(15vw, 240px); */
+    margin: 0 !important;
+    font-family: serif;
+    font-size: calc(3rem + 6vw);
+    line-height: calc(4px + 2ex);
+    text-align: center;
+    /* vertical-align:middle; */
+    /* height: 100%; */
+    /* line-height: max(min(8vh, 8vw), 60px); */
+    /* line-height: max(7.5vh, 5vw); */
+  }
+
+  .dev {
+    font-weight: bold;
+  }
+  a {
+    font-size: min(8vw, 40px);
+  }
+
+  .dot {
+    color: var(--accent);
+  }
+  .fade {
+    /* position:relative; */
+    /* bottom:0px; */
+    /* display:block; */
+    width: 100%;
+    margin-top: auto;
+    display: flex;
+    height: 20%;
+    background: linear-gradient(0deg, white 40%, rgba(255, 255, 255, 0) 100%);
+    /* align-self:; */
+    /* vertical-align: bottom; */
+    /* align-items: flex-end; */
+  }
+  .logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .blog-text {
+    align-self: flex-end;
+    width: 100%;
+    font-size: 0.8em;
+    color: var(--accent);
+    font-family: var(--fancy-font);
+  }
+</style>
+
+<div class="slide">
+  <div class="logo">
+    <p>Weible<span class="dot">.</span><span class="dev">dev</span></p>
+  </div>
+  <div class="fade">
+    <span class="blog-text">Blog</span>
+  </div>
+</div>
