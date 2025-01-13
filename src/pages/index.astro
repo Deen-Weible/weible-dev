@@ -9,7 +9,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
 import { getCollection } from "astro:content";
 
-const posts = await getCollection("blog");
+const posts = await getCollection('blog').then((posts) =>
+  posts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()).slice(0, 3)
+);
+
+
 
 const dateOptions: object = {
   year: 'numeric',
@@ -44,7 +48,7 @@ const dateOptions: object = {
     <!-- List of blog items -->
     <div class="blog-list">
       {
-        posts.slice(0, 3).map((post) => (
+        posts.map((post) => (
           <div class="blog-item">
             <BlogCard title={post.data.title} link={`/blog/${post.id}`} heroImage={`"${post.data.heroImage}"`} updatedDate={`${
               new Date(post.data.pubDate).toLocaleDateString("en-US", dateOptions)
