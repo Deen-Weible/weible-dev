@@ -1,0 +1,120 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const pages = await getCollection("blog", ({ data }) => {
+    return data.draft !== true;
+  }).then((posts) =>
+    posts.sort(
+      (a, b) =>
+        new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+    )
+  );
+
+  return paginate(pages, { pageSize: 6 });
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { page } = Astro.props;
+
+const dateOptions: object = {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title="Weible Blog" description="The blog list of weible.dev" />
+  </head>
+  <body>
+    <style>
+      body {
+        background-size: 25px 25px;
+    background-color: rgb(var(--gray-light));
+    background-image: linear-gradient(
+        to right,
+        rgb(221, 221, 221) 2px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgb(221, 221, 221) 1px, transparent 2px);
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* grid-template-rows: repeat(1fr); */
+        gap: 30px;
+        max-width: 1000px;
+      }
+      .grid-container > * {
+        padding: 20px;
+      }
+      .grid-background {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      @media (max-width: 1000px) {
+        .grid-container {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+      .button-container {
+        display:flex;
+        width:100%;
+        justify-content: center;
+        gap: 5px;
+        padding-top:25px;
+      }
+      h1 {
+        width:100%;
+        text-align: center;
+        margin-top:25px;
+        margin-bottom: 25px;
+        font-family: var(--fancy-font);
+        color: var(--accent);
+      }
+    </style>
+    <Header />
+    <h1>Blog Posts</h1>
+    <div style="display: flex; flex-direction: column;">
+      <div class="grid-background">
+        <div class="grid-container">
+          {
+            page.data.map((post) => (
+              <BlogCard
+                title={post.data.title}
+                link={`/blog/${post.id}`}
+                heroImage={`"${post.data.heroImage}"`}
+                updatedDate={`${new Date(post.data.pubDate).toLocaleDateString(
+                  "en-US",
+                  dateOptions
+                )}`}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+<div class="button-container">
+
+        {page.url.first ? <button onclick=`window.location.href="${page.url.first}"`>&lt;-</button> : <button disabled>&lt;-</button>}
+        {page.url.prev ? <button onclick=`window.location.href="${page.url.prev}"`>&lt;</button> : <button disabled>&lt;</button>}
+        {<span style="margin-inline:10px; color: rgb(var(--gray))">{page.url.current.slice(-1)}</span>}
+        {page.url.next ? <button onclick=`window.location.href="${page.url.next}"`>&gt;</button> : <button disabled>&gt;</button>}
+        {(page.url.last ? <button onclick=`window.location.href="${page.url.last}"`>-&gt;</button> : <button disabled>-&gt;</button>)}
+      </div>
+
+
+  <Footer />
+  </body>
+</html>
