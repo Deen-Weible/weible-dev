@@ -1,62 +1,94 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import Layout from "../layouts/BlogPost.astro";
 ---
 
 <Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/blog-placeholder-about.jpg"
+  title="About Me & This Site"
+  description="Lorem ipsum dolor sit amet"
+  pubDate={new Date("August 08 2021")}
+  heroImage="/blog-placeholder-about.jpg"
 >
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
-
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
-
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
-
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
-
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
+  <p>I'm a high school student learning programming & computer science.</p>
+  <h5>Interesting Projects</h5>
+  <ul>
+    <li>
+      Minigolf Arcade Game
+      <p>
+        A chaotic online multiplayer minigolf game where you try to beat your
+        friends in the race to the finish! Will you use your swings to get
+        further in the course, or will you attempt to sabotage your enemy? Your
+        choice.
+      </p>
+      <p>
+        In all seriousness, it's made as a way for me to learn how multiplayer
+        games work. I'm also (partially) writing the physics for the ball. I
+        create these ideas not only for the fun of the result but for learning
+        new concepts along the way.
+      </p>
+    </li>
+    <li>
+      ... This Website!
+      <p>
+        I'm building this website to learn responsive design and how to keep a
+        consistent interface across a larger project.
+      </p>
+      <p>
+        I'm also using something I've never used before, <a
+          href="https://astro.build/">Astro.build</a
+        >. It supports writing these blogs in markdown and automatically
+        converting them to this beautiful page. It also converts all of my blogs
+        into <a href="/rss.xml" target="_blank">RSS.</a>
+      </p>
+      <p>
+        I'm going to use this site to catalog my projects and interests. Look
+        forward to... at least one blog in the future!
+      </p>
+    </li>
+  </ul>
+  <h5>Interests</h5>
+  <ul>
+    <li>
+      Devboard hardware
+      <p>
+        I've recently found out about ESP32 development boards and have made
+        some cool projects with them. The blend of software and hardware
+        development is super fun, and... OMG! It's a <a
+          href="/blog/arduino-and-esp32-projects">blog about it!</a
+        >
+      </p>
+    </li>
+    <li>
+      Linux and Open Source Software
+      <p>
+        I believe that free (as in freedom) and open source software is one of
+        the most important communities, period. I use Arch (by the way) Linux
+        and a LineageOS Pixel 6 Pro. I'm sure I'll write more about the
+        importance of FOSS software in a blog (or 10) here.
+      </p>
+    </li>
+    <li>
+      Electronics Design and Repair
+      <p>
+        On top of making basic new hardware using the aforementioned dev boards,
+        I also love repairing electronics of all types. I volunteer at <a
+          href="https://www.repaircafe.org/en/visit/">Repair Café</a
+        >
+        in my city. It's a program that accepts anyone and their broken devices.
+        Myself and a couple of other wonderful volunteers try to repair whatever
+        we can, from noise machines to bikes and 3D printers to phones.
+      </p>
+      <p>
+        P.S. If you haven't heard of Repair Café before, please check it out!
+        It's an awesome program, and everyone there is fantastic.
+      </p>
+    </li>
+  </ul>
+  <p>
+    If you read to the end of this about page, you probably have some pretty
+    similar interests to me. Check back in every once in a while and support the
+    site by starring it on <a href="https://github.com/Deen-Weible">GitHub</a> and
+    spreading it around. There's also the <a href="/rss.xml" target="_blank"
+      >RSS</a
+    > page that you can follow. Thanks, everybody :)
+  </p>
 </Layout>

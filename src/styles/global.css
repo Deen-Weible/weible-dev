@@ -50,7 +50,7 @@ body {
   overflow-wrap: break-word;
   color: rgb(var(--gray-dark));
   font-size: 20px;
-  line-height: 1.7;
+  line-height: 1.5;
 }
 html {
   padding: 0px;
@@ -98,12 +98,12 @@ a {
 a:hover {
   color: var(--accent);
 }
-p {
+/* p {
   margin-bottom: 1em;
-}
-.prose p {
-  margin-bottom: 2em;
-}
+} */
+/* .prose p { */
+  /* margin-bottom: 2em; */
+/* } */
 textarea {
   width: 100%;
   font-size: 16px;
