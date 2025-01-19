@@ -1,3 +1,7 @@
+---
+import { SEO } from "astro-seo";
+---
+
 <style>
   .container {
     display: flex;
@@ -21,8 +25,8 @@
     font-size: min(calc(1.25rem + 3vw), 100px);
     width: 100%;
     text-align: left;
-		margin-top: 50px;
-		line-height: 30px;
+    margin-top: 50px;
+    line-height: 30px;
   }
   @media only screen and (max-width: 950px) {
     .container {
@@ -36,36 +40,50 @@
   }
 </style>
 
+<!-- <head>
+  <SEO
+    title="About"
+    description="Deen Weible's about page, where he introduces himself"
+    openGraph={{
+      basic: {
+        title: "About",
+        type: "website"
+        image: ""
+      },
+    }}
+  />
+</head> -->
+
 <div class="container">
   <div class="item">
     <div class="center-div" style="justify-content: right;">
-      <picture>
-        <source srcset="/rick.avif" type="image/avif" />
-        <img
-          src="/rick.png"
-          alt="A beautiful sketch of our rick astley, its a placeholder; chill."
-        />
-      </picture>
+      <img src="/DukeSketch.avif" alt="A sketch of a cute doggo" />
     </div>
   </div>
   <div class="item" style="justify-content:left;">
     <span class="header">Hi, I'm Deen</span>
     <div class="about-text">
       <p>I'm a high school student learning programming && computer science.</p>
-			<h5>Intresting Projects</h5>
-			<ul>
-				<li>A smart, phone controlled system for controlling effects of leds on a christmas tree using Esp32.</li>
-				<li>A arcade multiplayer minigolf game using Godot 4</li>
-				<li>... This website!</li>
-			</ul>
-			<h5>Intrests</h5>
-			<ul>
-				<li>Esp32 development, making smart things from dumb parts</li>
-				<li>Linux and open source software</li>
-				<li>Game design and development</li>
-				<li>electronics design and repair</li>
-			</ul>
+      <h5>Interesting Projects</h5>
+      <ul>
+        <li>
+          A smart, phone controlled system for controlling effects of leds on a
+          christmas tree using Esp32.
+        </li>
+        <li>A arcade multiplayer minigolf game using Godot 4</li>
+        <li>... This website!</li>
+      </ul>
+      <h5>Interests</h5>
+      <ul>
+        <li>Esp32 development, making smart things from dumb parts</li>
+        <li>Linux and open source software</li>
+        <li>Game design and development</li>
+        <li>electronics design and repair</li>
+      </ul>
     </div>
-    <button style="width: 100%; margin-top:20px;" onclick="window.location.href='/about'">More about me</button>
+    <button
+      style="width: 100%; margin-top:20px;"
+      onclick="window.location.href='/about'">More about me</button
+    >
   </div>
 </div>

@@ -2,7 +2,7 @@
 title: "Dev Boards Galore!"
 description: "I talk about projects I've made with ESP32 and Arduino dev kits, and briefly their differences."
 pubDate: "Jan 13 2024"
-heroImage: "/devboards-galore.avif"
+heroImage: "/BlogMedia/devboards-galore"
 ---
 Dev boards are designed as a tool for engineers to prototype simple electronics.. Butttt they're also tons of fun for random projects.
 
@@ -46,4 +46,3 @@ Then came the next decoration-filled holiday; those LEDs were calling my name fr
 Well, I naturally made a website-controlled Christmas tree that anyone in the house could set to their liking. With awesome animated effects and a simple, Wi-Fi-connected website, it delighted my family and took our tree up a level.
 
 It *was* super cool... and then it fried. I used a different power brick for the project, and something fried it beyond repair. Yeah, that happens. I also lost literally every picture, so... take my word for it? I'll publish the code to my GitHub one of these days. Yeah, sorry.
-

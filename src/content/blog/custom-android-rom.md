@@ -2,7 +2,7 @@
 title: 'Custom Android Roms - Open Sourcing My Mobile'
 description: 'Talking about my experience getting a Google Pixel and trying several different roms'
 pubDate: 'Jun 19 2024'
-heroImage: '/BlogMedia/OssAndroidRoms.avif'
+heroImage: '/BlogMedia/OssAndroidRoms'
 ---
 
 #### My device of choice

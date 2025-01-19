@@ -1,28 +1,9 @@
 ---
-// interface Props {
-//   title: string;
-//   description: string;
-//   updatedDate: string;
-//   image?: string;
-// }
-
-const {
-  title = "Unnamed Blog",
-  link = "/blog/markdown-style-guide/",
-  heroImage = "/placeholder.jpg",
-  updatedDate = "Jan 1, 1984",
-} = Astro.props;
-// heroImage = heroImage.slice(0, -1) + '.jpg' + heroImage.slice(-1)
+const { title, link, description, updatedDate, heroImage } = Astro.props;
 ---
+
 <!-- Styles -->
 <style>
-/* html {
-  background: #f5f7f8;
-  font-family: system-ui;
-  -webkit-font-smoothing: antialiased;
-  padding: 20px 0;
-} */
-
 header {
   width: 90%;
   max-width: 1240px;
@@ -57,7 +38,7 @@ header {
   /* width: min(45rem, 90vw); */
 
   &:hover {
-    top: -2px;
+    top: -20px;
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   }
 
@@ -108,12 +89,45 @@ header {
   width: min(calc(27.5rem + 0.5vw), 95vw);
   box-shadow: var(--box-shadow);
 }
+/* .card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+} */
+
 </style>
+
+<!-- <script>
+  async function supportsAvif() {
+  if (!this.createImageBitmap) return false
+  const avifData =
+    'data:image/avif;base64,AAAAFGZ0eXBhdmlmAAAAAG1pZjEAAACgbWV0YQAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAC8AAAAGwAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAARWlwcnAAAAAoaXBjbwAAABRpc3BlAAAAAAAAAAQAAAAEAAAADGF2MUOBAAAAAAAAFWlwbWEAAAAAAAAAAQABAgECAAAAI21kYXQSAAoIP8R8hAQ0BUAyDWeeUy0JG+QAACANEkA='
+  const blob = await fetch(avifData).then((r) => r.blob())
+  return createImageBitmap(blob).then(
+    () => true,
+    () => false
+  )
+}
+
+;(async () => {
+  const classAvif = (await supportsAvif()) ? 'avif' : 'no-avif'
+  document.body.classList.add(classAvif)
+})()
+</script> -->
 
 <!-- HTML -->
 <div class="card-div">
   <a href={`${link}`} class="card">
-    <div class="thumb" style={`background-image: url(${heroImage});`}></div>
+          {
+            heroImage && (
+              <picture>
+                {/* <source srcset={`${heroImage}.avif`} type="image/avif" /> */}
+                <source srcset={`${heroImage}.avif`}/>
+                <img src={`${heroImage}.jpg`} alt={`${description}`} />
+              </picture>
+            )
+          }
     <article>
       <h1>{title}</h1>
       <span>{updatedDate}</span>

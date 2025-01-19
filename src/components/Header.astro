@@ -25,6 +25,7 @@ import HeaderLink from './HeaderLink.astro';
 </header>
 <style>
 	header {
+		height:75px;
 		margin: 0;
 		padding: 0 1em;
 		background: white;
@@ -59,8 +60,8 @@ import HeaderLink from './HeaderLink.astro';
 	}
 	.internal-links {
 		position: absolute;
-		left:50%;
-		right:50%;
+		left:50vw;
+		right:50vw;
 		min-width: max-content;
 	}
 	.social-links,
@@ -70,6 +71,11 @@ import HeaderLink from './HeaderLink.astro';
 	@media (max-width: 720px) {
 		.social-links {
 			display: none;
+		}
+		.internal-links {
+			position:relative;
+			left:0;
+			right:0;
 		}
 	}
 </style>

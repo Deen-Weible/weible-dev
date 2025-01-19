@@ -2,7 +2,7 @@
 title: 'The importance of repair + Repair Café'
 description: 'Talking about the importance of right to repair, venting about Apple and voulenteering at Repair Café'
 pubDate: 'Jun 20 2024'
-heroImage: '/BlogMedia/RightToRepair-AndSuch.avif'
+heroImage: '/BlogMedia/RightToRepair-AndSuch'
 ---
 In my opinion the ability to modify and repair things that you own should be a fundamental right, not a controversy. This coincides with my other "you should own what you buy" ideas, crazy I know.
 
