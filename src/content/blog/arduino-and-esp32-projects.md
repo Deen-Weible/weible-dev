@@ -1,7 +1,7 @@
 ---
 title: "Dev Boards Galore!"
 description: "I talk about projects I've made with ESP32 and Arduino dev kits, and briefly their differences."
-pubDate: "Jan 13 2024"
+pubDate: "Jan 18 2025"
 heroImage: "/BlogMedia/devboards-galore"
 ---
 Dev boards are designed as a tool for engineers to prototype simple electronics.. Butttt they're also tons of fun for random projects.

@@ -93,7 +93,8 @@ const dateOptions: object = {
               <BlogCard
                 title={post.data.title}
                 link={`/blog/${post.id}`}
-                heroImage={`"${post.data.heroImage}"`}
+                description={`${post.data.description}`}
+                heroImage={`${post.data.heroImage}`}
                 updatedDate={`${new Date(post.data.pubDate).toLocaleDateString(
                   "en-US",
                   dateOptions

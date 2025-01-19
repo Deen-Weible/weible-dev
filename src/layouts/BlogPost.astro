@@ -78,7 +78,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
             heroImage && (
               <picture>
                 {/* <source srcset={`${heroImage}.avif`} type="image/avif" /> */}
-                <img width={1020} height={510} src={`${heroImage}`} alt="" />
+                <source srcset={`${heroImage}.avif`}/>
+                <img src={`${heroImage}.jpg`} alt={`${description}`} />
               </picture>
             )
           }
