@@ -1,5 +1,6 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { SEO } from "astro-seo";
 import { getCollection } from "astro:content";
 import BaseHead from "../../components/BaseHead.astro";
 import BlogCard from "../../components/BlogCard.astro";
@@ -33,7 +34,18 @@ const dateOptions: object = {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title="Weible Blog" description="The blog list of weible.dev" />
+    <SEO
+    title="Blogs"
+    description="An index with all of Deen Weible's blog posts"
+    openGraph={{
+      basic: {
+        title: "Blogs - Weible.dev",
+        type: "website",
+        image: `${new URL("/Blog.jpg", Astro.url)}`,
+      },
+    }}
+  />
+    <BaseHead title="Blogs - Weible.dev" description="An index with all of Deen Weible's blog posts" />
   </head>
   <body>
     <style>
@@ -106,14 +118,14 @@ const dateOptions: object = {
       </div>
     </div>
 
-<div class="button-container">
+<!-- <div class="button-container">
 
         {page.url.first ? <button onclick=`window.location.href="${page.url.first}"`>&lt;-</button> : <button disabled>&lt;-</button>}
         {page.url.prev ? <button onclick=`window.location.href="${page.url.prev}"`>&lt;</button> : <button disabled>&lt;</button>}
         {<span style="margin-inline:10px; color: rgb(var(--gray))">{page.url.current.slice(-1)}</span>}
         {page.url.next ? <button onclick=`window.location.href="${page.url.next}"`>&gt;</button> : <button disabled>&gt;</button>}
         {(page.url.last ? <button onclick=`window.location.href="${page.url.last}"`>-&gt;</button> : <button disabled>-&gt;</button>)}
-      </div>
+      </div> -->
 
 
   <Footer />

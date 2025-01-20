@@ -1,26 +1,10 @@
 ---
-import { SEO } from "astro-seo";
 import Layout from "../layouts/BlogPost.astro";
 ---
 
-
-<head>
-  <SEO
-    title="About"
-    description="Deen Weible's about page, where he introduces himself"
-    openGraph={{
-      basic: {
-        title: "About me - Weible.dev",
-        type: "website",
-        image: `${new URL("/BlogMedia/aboutme.jpg", Astro.url)}`,
-      },
-    }}
-  />
-</head>
-
 <Layout
   title="About Me & This Site"
-  description="The about page of weible.dev"
+  description="The about page of Weible.dev"
   pubDate={new Date("January 18 2025")}
   heroImage="/BlogMedia/AboutMe"
 >

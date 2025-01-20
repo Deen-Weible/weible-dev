@@ -1,4 +1,6 @@
 ---
+import Photo from "./Photo.astro";
+
 const { title, link, description, updatedDate, heroImage } = Astro.props;
 ---
 
@@ -121,10 +123,7 @@ header {
   <a href={`${link}`} class="card">
           {
             heroImage && (
-              <picture>
-                <source srcset={`${heroImage}.avif`}/>
-                <img src={`${heroImage}.jpg`} alt={`${description}`} />
-              </picture>
+              <Photo src={heroImage} alt={description}/>
             )
           }
     <article>

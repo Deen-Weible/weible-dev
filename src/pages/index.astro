@@ -1,4 +1,5 @@
 ---
+import { SEO } from "astro-seo";
 import AboutMe from "../components/AboutMe.astro";
 import BaseHead from "../components/BaseHead.astro";
 import BlogCard from "../components/BlogCard.astro";
@@ -25,12 +26,23 @@ const dateOptions: object = {
 <!doctype html>
 <html lang="en" style="padding: 0px;">
   <head>
+    <SEO
+    title="Home"
+    description="Deen Weible's homepage, with links to all of the goods"
+    openGraph={{
+      basic: {
+        title: "Home - Weible.dev",
+        type: "website",
+        image: `${new URL("/HomePage.jpg", Astro.url)}`,
+      },
+    }}
+  />
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <style>
       .blog-list {
         display: flex;
         justify-content: center;
-        min-height: 500px;
+        min-height: 420px;
         max-width: 100vw;
         flex-wrap: wrap;
         padding-bottom: 45px;
