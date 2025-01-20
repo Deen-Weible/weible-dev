@@ -6,20 +6,23 @@ import BlogCard from "../components/BlogCard.astro";
 import Footer from "../components/Footer.astro";
 import FullPageSlide from "../components/FullPageSlide.astro";
 import Header from "../components/Header.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { SITE_DESCRIPTION  } from "../consts";
 
 import { getCollection } from "astro:content";
 
-const posts = await getCollection('blog').then((posts) =>
-  posts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()).slice(0, 3)
+const posts = await getCollection("blog").then((posts) =>
+  posts
+    .sort(
+      (a, b) =>
+        new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+    )
+    .slice(0, 3)
 );
 
-
-
 const dateOptions: object = {
-  year: 'numeric',
-			month: 'short',
-			day: 'numeric',
+  year: "numeric",
+  month: "short",
+  day: "numeric",
 };
 ---
 
@@ -27,17 +30,17 @@ const dateOptions: object = {
 <html lang="en" style="padding: 0px;">
   <head>
     <SEO
-    title="Home"
-    description="Deen Weible's homepage, with links to all of the goods"
-    openGraph={{
-      basic: {
-        title: "Home - Weible.dev",
-        type: "website",
-        image: `${new URL("/HomePage.jpg", Astro.url)}`,
-      },
-    }}
-  />
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+      title="Home"
+      description="Deen Weible's homepage, with links to all of the goods"
+      openGraph={{
+        basic: {
+          title: "Home - Weible.dev",
+          type: "website",
+          image: `${new URL("/HomePage.jpg", Astro.url)}`,
+        },
+      }}
+    />
+    <BaseHead title="Home - Weible.dev" description={SITE_DESCRIPTION} />
     <style>
       .blog-list {
         display: flex;
@@ -62,10 +65,16 @@ const dateOptions: object = {
       {
         posts.map((post) => (
           <div class="blog-item">
-            <BlogCard title={post.data.title} link={`/blog/${post.id}`} description={`${post.data.description}`} heroImage={`${post.data.heroImage}`} updatedDate={`${
-              new Date(post.data.pubDate).toLocaleDateString("en-US", dateOptions)
-              }`}>
-            </BlogCard>
+            <BlogCard
+              title={post.data.title}
+              link={`/blog/${post.id}`}
+              description={`${post.data.description}`}
+              heroImage={`${post.data.heroImage}`}
+              updatedDate={`${new Date(post.data.pubDate).toLocaleDateString(
+                "en-US",
+                dateOptions
+              )}`}
+            ></BlogCard>
           </div>
         ))
       }

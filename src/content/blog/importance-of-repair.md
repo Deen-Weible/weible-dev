@@ -8,7 +8,7 @@ In my opinion the ability to modify and repair things that you own should be a f
 
 Quick sidenote: I'm not going to go into politics or law in this post.
 
-I voulenteer at my local [Repair Café](https://www.repaircafe.org/en/visit/) in Colorado, if you haven't heard of it before, its an initiative where people can bring broken items like electronics, clothing, wood, or anything else and we'll try to fix them free of charge.
+I bolunteer at my local [Repair Café](https://www.repaircafe.org/en/visit/) in Colorado, if you haven't heard of it before, its an initiative where people can bring broken items like electronics, clothing, wood, or anything else and we'll try to fix them free of charge.
 
 ### Learning
 
