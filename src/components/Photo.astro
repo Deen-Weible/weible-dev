@@ -3,6 +3,6 @@ const { src, alt, cssclass, style, id } = Astro.props;
 ---
 
 <picture class={cssclass ?? ''} style={style ?? ''} id={id ?? ''}>
-  <source srcset={src ? `${src}.avif` : ''} />
-  <img src={src ? `${src}.jpg` : ''} alt={alt ?? ''} />
+  <source srcset={src ? `${src}.jpg` : ''} />
+  <img src={src ? `${src}.avif` : ''} alt={alt ?? ''} />
 </picture>

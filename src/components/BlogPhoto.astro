@@ -1,0 +1,15 @@
+---
+const { src, alt } = Astro.props;
+---
+
+<style>
+	picture * {
+		border-radius: 8px;
+		box-shadow: var(--box-shadow);
+	}
+</style>
+
+<picture>
+  <source srcset={src ? `${src}.jpg` : ''} />
+  <img src={src ? `${src}.avif` : ''} alt={alt ?? ''} />
+</picture>
