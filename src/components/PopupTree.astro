@@ -1,0 +1,297 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog").then((posts) =>
+  posts.sort(
+    (a, b) =>
+      new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+  )
+);
+---
+
+<!-- <BaseHead title=`${title}` description=`${description}` /> -->
+<style>
+  .tree {
+    --spacing: 1.5rem;
+    --radius: 10px;
+  }
+
+  .tree li {
+    display: block;
+    position: relative;
+    padding-left: calc(2 * var(--spacing) - var(--radius) - 2px);
+  }
+
+  .tree ul {
+    margin-left: calc(var(--radius) - var(--spacing));
+    padding-left: 0;
+  }
+
+  .tree ul li {
+    border-left: 2px solid #ddd;
+  }
+
+  .tree ul li:last-child {
+    border-color: transparent;
+  }
+
+  .tree ul li::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: calc(var(--spacing) / -2);
+    left: -2px;
+    width: calc(var(--spacing) + 2px);
+    height: calc(var(--spacing) + 1px);
+    border: solid #ddd;
+    border-width: 0 0 2px 2px;
+  }
+
+  .tree summary {
+    display: block;
+    cursor: pointer;
+  }
+
+  .tree summary::marker,
+  .tree summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .tree summary:focus {
+    outline: none;
+  }
+
+  .tree summary:focus-visible {
+    outline: 1px dotted #000;
+  }
+
+  .tree li::after,
+  .tree summary::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: calc(var(--spacing) / 2 - var(--radius));
+    left: calc(var(--spacing) - var(--radius) - 1px);
+    width: calc(2 * var(--radius));
+    height: calc(2 * var(--radius));
+    border-radius: 50%;
+    background: #ddd;
+  }
+
+  .tree summary::before {
+    z-index: 1;
+    background: #696;
+  }
+
+  .tree details[open] > summary::before {
+    background-position: calc(-2 * var(--radius)) 0;
+  }
+  a {
+    color: inherit; /* Makes the link color the same as surrounding text */
+    text-decoration: none; /* Removes the underline */
+  }
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+  }
+
+  .popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: min(600px, 90vw);
+  }
+
+  .popup.show {
+    display: block;
+  }
+</style>
+<script lang="js">
+  // Array to hold matching list items
+  var matchingItems = [];
+  var currentFocus = 0;
+  var internalInput = document.getElementById("internalSearch");
+
+  var hasMatch = false;
+  var matchingItems = []; // Initialize matchingItems array for this details element
+  var visibleLink = [];
+
+  var popupContent = document.getElementById("popup-content");
+
+  // document.getElementById("internalSearch").addEventListener("input", function () {
+
+  // })
+
+  document.addEventListener("click", function (event) {
+    console.log(event.target);
+    console.log(event.target.id);
+    if (event.target.id == "popup") {
+      console.log("selected something else");
+      popup.classList.remove("show");
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    console.log(event.key);
+    if (event.key === "Escape") {
+      popup.classList.remove("show");
+    }
+    if (event.key == " " || ((event.metaKey || event.ctrlKey) && event.key === 'k')) {
+      event.preventDefault();
+      showPopup();
+    }
+    if (event.key == "Enter" && visibleLinks.length > 0) {
+      console.log(visibleLinks[0]);
+      window.location.href = visibleLinks[0].getAttribute("href");
+    }
+  });
+
+  function showPopup() {
+    popup.classList.add("show");
+    document.getElementById("internalSearch").focus();
+    internalInput = document.getElementById("internalSearch");
+  }
+
+  function updateSearch() {
+    // Get the input element and its value
+    var filter = internalInput.value.toUpperCase().split(" "); // Split the input value into words
+
+    // Get the main tree list
+    var tree = document.getElementById("tree");
+    var detailsElements = tree.getElementsByTagName("details");
+
+    // Initialize an empty array to store visible <a> objects
+    visibleLinks = [];
+
+    // Loop through all details elements
+    for (var i = 0; i < detailsElements.length; i++) {
+      var details = detailsElements[i];
+      var listItems = details.getElementsByTagName("li");
+
+      // Flag to track if any item matches
+      hasMatch = false;
+      matchingItems = []; // Initialize matchingItems array for this details element
+
+      // Loop through all list items within the current details
+      for (var j = 0; j < listItems.length; j++) {
+        var itemText = listItems[j].textContent || listItems[j].innerText;
+        var itemLink = listItems[j].querySelector("a"); // Get the <a> element within the <li>
+        var itemDesc = itemLink ? itemLink.dataset.desc : ""; // Access the data-desc attribute from the <a> element
+
+        // Log the values for debugging
+        console.log("Item Text:", itemText);
+        console.log("Item Desc:", itemDesc);
+
+        // Check if the text value or the data-desc value contains all filter words
+        var matchesAllFilters = true;
+        for (var k = 0; k < filter.length; k++) {
+          if (
+            itemText.toUpperCase().indexOf(filter[k]) === -1 &&
+            itemDesc &&
+            itemDesc.toUpperCase().indexOf(filter[k]) === -1
+          ) {
+            matchesAllFilters = false;
+            break;
+          }
+        }
+
+        if (matchesAllFilters) {
+          matchingItems.push(listItems[j]); // Add matching item to the array
+          listItems[j].style.display = "block"; // Show the matching item
+          hasMatch = true; // Set flag to true if a match is found
+
+          // Add the visible <a> object to the array
+          if (itemLink) {
+            visibleLinks.push(itemLink);
+          }
+        } else {
+          listItems[j].style.display = "none"; // Hide non-matching items
+        }
+      }
+
+      // Open the details element if there is a match
+      if (hasMatch) {
+        console.log(matchingItems);
+        details.open = true; // Open the details element
+      } else {
+        details.open = false; // Close the details element if no matches
+      }
+    }
+
+    // Log all matching list items and visible <a> objects to the console
+    console.log("Matching items:", matchingItems);
+    console.log("Visible links:", visibleLinks);
+  }
+</script>
+
+<!-- <input
+    type="text"
+    id="Search"
+    onkeyup="searchList()"
+    placeholder="Search for names.."
+    title="Type in a name"
+  /> -->
+<div class="popup" id="popup">
+  <div class="popup-content" id="popup-content">
+    <input
+      type="text"
+      id="internalSearch"
+      placeholder="Search for names.."
+      oninput="updateSearch();"
+      title="Type in a name"
+      style="width: 100%;"
+    />
+    <ul class="tree" id="tree">
+      <ul>
+        <li>
+          <details open>
+            <summary>Pages</summary>
+            <ul>
+              <li>
+                <a href="/" data-desc="Home / Return ~">Home</a>
+              </li>
+              <li>
+                <a
+                  href="/blog/1"
+                  data-desc="Blog Blogs Post Posts Collection Texts All">Blog</a
+                >
+              </li>
+              <li>
+                <a href="/about" data-desc="About Me Personal">About</a>
+              </li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details open>
+            <summary>Blog Posts</summary>
+            <ul>
+              {
+                posts.map((post) => (
+                  <li>
+                    <a
+                      href={`/blog/${post.id}`}
+                      data-desc={`${post.data.description}`}
+                    >
+                      {post.data.title}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </ul>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 ---
+import PopupTree from "../components/PopupTree.astro";
 import Layout from "../layouts/BlogPost.astro";
 ---
 
@@ -8,12 +9,11 @@ import Layout from "../layouts/BlogPost.astro";
   pubDate={new Date("January 23  2025")}
   heroImage="/BlogMedia/AboutMe"
 >
+  <PopupTree />
   <h4>Current Projects</h4>
   <ul>
     <p>
-      <li>
-        VEX V5 school robotics competitions, we are the Headless Nails!
-      </li>
+      <li>VEX V5 school robotics competitions, we are the Headless Nails!</li>
       <li>
         A multiplayer online minigolf game, where chaos takes over. Made in
         Godot 4

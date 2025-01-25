@@ -60,6 +60,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
   }
   .blog-text {
     align-self: flex-end;
@@ -68,11 +69,22 @@
     color: var(--accent);
     font-family: var(--fancy-font);
   }
+  input {
+    width: min(500px, 95vw);
+    text-align: center;
+  }
 </style>
 
 <div class="slide">
   <div class="logo">
     <p>Weible<span class="dot">.</span><span class="dev">dev</span></p>
+    <input
+      type="text"
+      id="Search"
+      placeholder="Click/space to search"
+      title="Type in a name"
+      onclick="showPopup();"
+    />
   </div>
   <div class="fade">
     <span class="blog-text">Blog</span>
