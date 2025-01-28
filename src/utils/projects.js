@@ -1,19 +1,18 @@
-// Sample projects data
 const projects = [
   {
-    title: "Project A",
-    description: "This is the first project.",
-    link: "/project-a"
-  },
-  {
-    title: "Project B",
-    description: "This is the second project.",
-    link: "/project-b"
-  },
-  // Add more projects as needed
+    title: "Mini Golf Mania",
+    description: "A phyics based mini-golf game where you challenge your friends online!",
+    link: "minigolf-mania"
+  }
 ];
 
 // Function to get projects
 export function getProjects() {
-  return projects;
+  // add /project/ to each project's link
+  const updatedProjects = projects.map((project) => ({
+    ...project,
+    link: `/project/${project.link}`
+  }));
+
+  return updatedProjects;
 }

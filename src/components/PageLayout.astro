@@ -1,0 +1,32 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
+const { title, description, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+  </head>
+  <body>
+    <style>
+      body {
+        background-size: 25px 25px;
+    background-color: rgb(var(--gray-light));
+    background-image: linear-gradient(
+        to right,
+        rgb(221, 221, 221) 2px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgb(221, 221, 221) 1px, transparent 2px);
+      }
+    </style>
+    <Header />
+    <slot />
+
+  <Footer />
+  </body>
+</html>

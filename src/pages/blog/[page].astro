@@ -1,17 +1,13 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
-import { SEO } from "astro-seo";
 import { getCollection } from "astro:content";
 import BaseHead from "../../components/BaseHead.astro";
 import BlogCard from "../../components/BlogCard.astro";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 
-
 export const getStaticPaths = (async ({ paginate }) => {
-  const pages = await getCollection("blog", ({ data }) => {
-    return data.draft !== true;
-  }).then((posts) =>
+  const pages = await getCollection("blog").then((posts) =>
     posts.sort(
       (a, b) =>
         new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
@@ -34,30 +30,23 @@ const dateOptions: object = {
 <!doctype html>
 <html lang="en">
   <head>
-    <SEO
-    title="Blogs"
-    description="An index with all of Deen Weible's blog posts"
-    openGraph={{
-      basic: {
-        title: "Blogs - Weible.dev",
-        type: "website",
-        image: `${new URL("/Blog.jpg", Astro.url)}`,
-      },
-    }}
-  />
-    <BaseHead title="Blogs - Weible.dev" description="An index with all of Deen Weible's blog posts" />
+    <BaseHead
+      title="Blogs - Weible.dev"
+      description="An index with all of Deen Weible's blog posts"
+      image=`${new URL("/Blog.jpg", Astro.url)}`
+    />
   </head>
   <body>
     <style>
       body {
         background-size: 25px 25px;
-    background-color: rgb(var(--gray-light));
-    background-image: linear-gradient(
-        to right,
-        rgb(221, 221, 221) 2px,
-        transparent 1px
-      ),
-      linear-gradient(to bottom, rgb(221, 221, 221) 1px, transparent 2px);
+        background-color: rgb(var(--gray-light));
+        background-image: linear-gradient(
+            to right,
+            rgb(221, 221, 221) 2px,
+            transparent 1px
+          ),
+          linear-gradient(to bottom, rgb(221, 221, 221) 1px, transparent 2px);
       }
       .grid-container {
         display: grid;
@@ -80,16 +69,16 @@ const dateOptions: object = {
         }
       }
       .button-container {
-        display:flex;
-        width:100%;
+        display: flex;
+        width: 100%;
         justify-content: center;
         gap: 5px;
-        padding-top:25px;
+        padding-top: 25px;
       }
       h1 {
-        width:100%;
+        width: 100%;
         text-align: center;
-        margin-top:25px;
+        margin-top: 25px;
         margin-bottom: 25px;
         font-family: var(--fancy-font);
         color: var(--accent);
@@ -118,7 +107,7 @@ const dateOptions: object = {
       </div>
     </div>
 
-<!-- <div class="button-container">
+    <!-- <div class="button-container">
 
         {page.url.first ? <button onclick=`window.location.href="${page.url.first}"`>&lt;-</button> : <button disabled>&lt;-</button>}
         {page.url.prev ? <button onclick=`window.location.href="${page.url.prev}"`>&lt;</button> : <button disabled>&lt;</button>}
@@ -127,7 +116,6 @@ const dateOptions: object = {
         {(page.url.last ? <button onclick=`window.location.href="${page.url.last}"`>-&gt;</button> : <button disabled>-&gt;</button>)}
       </div> -->
 
-
-  <Footer />
+    <Footer />
   </body>
 </html>

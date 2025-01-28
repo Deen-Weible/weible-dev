@@ -1,21 +1,26 @@
 ---
-import { SEO } from "astro-seo";
+import BaseHead from "../../components/BaseHead.astro";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <SEO
-    title="Blogs"
-    description="An index with all of Deen Weible's blog posts"
-    openGraph={{
-      basic: {
-        title: "Blogs - Weible.dev",
-        type: "website",
-        image: `${new URL("/Blog.jpg", Astro.url)}`,
-      },
-    }}
-  />
+    <BaseHead
+      title="Blogs"
+      description="An index with all of Deen Weible's blog posts"
+      image={`${new URL("/Blog.jpg", Astro.url)}`}
+    />
+    <!-- <SEO
+      title="Blogs"
+      description="An index with all of Deen Weible's blog posts"
+      openGraph={{
+        basic: {
+          title: "Blogs - Weible.dev",
+          type: "website",
+          image: `${new URL("/Blog.jpg", Astro.url)}`,
+        },
+      }}
+    /> -->
   </head>
   <body>
     This is a filler page for correct metadata, It should've redirected you to <a href="/blog/1">here</a>

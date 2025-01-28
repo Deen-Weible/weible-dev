@@ -1,5 +1,4 @@
 ---
-import { SEO } from "astro-seo";
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
@@ -13,9 +12,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 <html lang="en">
   <head>
-    <SEO
-    title=`${title}`
-    description=`${description}`
+    <!-- <SEO
+      title={`${title}`}
+      description={`${description}`}
     openGraph={{
       basic: {
         title: `${title} - Weible.dev`,
@@ -23,8 +22,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         image: `${new URL(`${heroImage}.jpg`, Astro.url)}`,
       },
     }}
-  />
-    <BaseHead title={title} description={description} />
+  /> -->
+    <BaseHead title={title} description={description} image={heroImage} />
     <style>
       body {
         background-size: 25px 25px;
