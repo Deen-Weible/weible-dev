@@ -7,7 +7,7 @@ heroImage: '/BlogMedia/OssAndroidRoms'
 
 #### My Device of Choice
 
-The phone in the thumbnail! I went for a refurbished yellow Pixel 6 Pro, which I've been loving. I've had it for 1¾ years as of writing.
+I went for a refurbished yellow Pixel 6 Pro, which I've been loving. I've had it for 1¾ years as of writing.
 
 Unrelated: It does have one weird issue where the screen will go out sometimes, and I have to slap it to fix it. Not worth opening to fix, and I probably dropped it at some point.
 
