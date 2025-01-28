@@ -16,17 +16,15 @@ import Photo from "./Photo.astro";
     max-width: 600px;
     margin-left: 15px;
     margin-right: 15px;
-    /* margin-left:100px; */
   }
   .header {
-    /* margin-left:50px; */
     color: var(--accent);
     font-family: var(--fancy-font);
     font-size: min(calc(1.25rem + 3vw), 100px);
     width: 100%;
     text-align: left;
     margin-top: 50px;
-    line-height: 30px;
+    line-height: 3vw;
   }
   @media only screen and (max-width: 950px) {
     .container {
@@ -35,29 +33,21 @@ import Photo from "./Photo.astro";
     .item {
       margin-left: 0px;
       margin-right: 0px;
-      /* background-color: aqua; */
     }
   }
 </style>
 
-
 <div class="container">
   <div class="item">
-    <div class="center-div" style="justify-content: right;">
       <Photo src="/DukeSketch" alt="A sketch of a cute doggo"/>
-      <!-- <img src="/DukeSketch.avif" alt="A sketch of a cute doggo" /> -->
     </div>
-  </div>
-  <div class="item" style="justify-content:left;">
+  <div class="item">
     <span class="header">Hi, I'm Deen</span>
     <div class="about-text">
       <p>I'm a high school student learning programming && computer science.</p>
       <h5>Interesting Projects</h5>
       <ul>
-        <li>
-          A smart, phone controlled system for controlling effects of leds on a
-          christmas tree using Esp32.
-        </li>
+        <li>A smart, phone controlled system for controlling effects of leds on a christmas tree using Esp32.</li>
         <li>A arcade multiplayer minigolf game using Godot 4</li>
         <li>... This website!</li>
       </ul>
@@ -69,9 +59,6 @@ import Photo from "./Photo.astro";
         <li>electronics design and repair</li>
       </ul>
     </div>
-    <button
-      style="width: 100%; margin-top:20px;"
-      onclick="window.location.href='/about'">More about me</button
-    >
+    <button style="width: 100%; margin-top:20px;" onclick="window.location.href='/about'">More about me</button>
   </div>
 </div>
