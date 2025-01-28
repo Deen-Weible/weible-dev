@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { getProjects } from "../utils/projects.js"; // Import projects function
 
 const posts = await getCollection("blog").then((posts) =>
   posts.sort(
@@ -7,9 +8,10 @@ const posts = await getCollection("blog").then((posts) =>
       new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
   )
 );
+
+const projects = await getProjects(); // Get projects from the array
 ---
 
-<!-- <BaseHead title=`${title}` description=`${description}` /> -->
 <style>
   .tree {
     --spacing: 1.5rem;
@@ -234,13 +236,6 @@ const posts = await getCollection("blog").then((posts) =>
   }
 </script>
 
-<!-- <input
-    type="text"
-    id="Search"
-    onkeyup="searchList()"
-    placeholder="Search for names.."
-    title="Type in a name"
-  /> -->
 <div class="popup" id="popup">
   <div class="popup-content" id="popup-content">
     <input
@@ -287,6 +282,25 @@ const posts = await getCollection("blog").then((posts) =>
                       data-desc={`${post.data.description}`}
                     >
                       {post.data.title}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details open>
+            <summary>Projects</summary>
+            <ul>
+              {
+                projects.map((project) => (
+                  <li>
+                    <a
+                      href={`/projects/${project.link}`}
+                      data-desc={`${project.description}`}
+                    >
+                      {project.title}
                     </a>
                   </li>
                 ))
