@@ -1,0 +1,17 @@
+---
+const { height } = Astro.props;
+---
+
+<style>
+	.center {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
+		width: 100vw;
+	}
+</style>
+
+<div class="center" style={height ? `height: ${height};` : ''}>
+	<slot />
+</div>

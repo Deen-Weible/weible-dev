@@ -297,7 +297,7 @@ const projects = await getProjects(); // Get projects from the array
                 projects.map((project) => (
                   <li>
                     <a
-                      href={`/projects/${project.link}`}
+                      href={`${project.link}`}
                       data-desc={`${project.description}`}
                     >
                       {project.title}

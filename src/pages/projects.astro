@@ -1,31 +1,28 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
 import Layout from "../layouts/BlogPost.astro";
 import { getProjects } from "../utils/projects.js";
 
 const projects = getProjects();
 ---
-
-<BaseHead title="What I'm Up To Now" description="Projects I'm working on right now" />
-
 <Layout
-  title="What I'm Up To Now"
+  title="Projects"
   description="Projects I'm working on right now"
-  pubDate={new Date("January 23 2025")}
+  pubDate={new Date("January 26 2025")}
   heroImage="/BlogMedia/AboutMe"
 >
-  <!-- Keep the links default color -->
+  <!-- Keep the links inherited color -->
   <style>
     a {
-      color: default;
+      color: inherit;
     }
   </style>
 
-  <h4>Current Projects</h4>
+  <h4>Published Projects</h4>
   <ul>
     {
       projects.map((project) => (
         <li>
+          {project.emoji ? <span>{project.emoji} </span> : null}
           <a href={project.link}>
             {project.title} - {project.description}
           </a>

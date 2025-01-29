@@ -15,18 +15,13 @@ const { title, description, image } = Astro.props;
     <style>
       body {
         background-size: 25px 25px;
-    background-color: rgb(var(--gray-light));
-    background-image: linear-gradient(
-        to right,
-        rgb(221, 221, 221) 2px,
-        transparent 1px
-      ),
-      linear-gradient(to bottom, rgb(221, 221, 221) 1px, transparent 2px);
+        background-color: rgb(var(--gray-light));
+        background-image: linear-gradient(to right, rgb(221, 221, 221) 2px, transparent 1px), linear-gradient(to bottom, rgb(221, 221, 221) 1px, transparent 2px);
       }
     </style>
     <Header />
+    <!-- where the content goes -->
     <slot />
-
-  <Footer />
+    <Footer />
   </body>
 </html>
