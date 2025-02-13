@@ -86,6 +86,7 @@ const dateOptions: object = {
     </style>
     <Header />
     <h1>Blog Posts</h1>
+    <div style="padding-bottom: 30px;">
     <div style="display: flex; flex-direction: column;">
       <div class="grid-background">
         <div class="grid-container">
@@ -108,14 +109,13 @@ const dateOptions: object = {
     </div>
 
     <!-- <div class="button-container">
-
         {page.url.first ? <button onclick=`window.location.href="${page.url.first}"`>&lt;-</button> : <button disabled>&lt;-</button>}
         {page.url.prev ? <button onclick=`window.location.href="${page.url.prev}"`>&lt;</button> : <button disabled>&lt;</button>}
         {<span style="margin-inline:10px; color: rgb(var(--gray))">{page.url.current.slice(-1)}</span>}
         {page.url.next ? <button onclick=`window.location.href="${page.url.next}"`>&gt;</button> : <button disabled>&gt;</button>}
         {(page.url.last ? <button onclick=`window.location.href="${page.url.last}"`>-&gt;</button> : <button disabled>-&gt;</button>)}
       </div> -->
-
+</div>
     <Footer />
   </body>
 </html>

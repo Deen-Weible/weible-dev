@@ -1,6 +1,8 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import MarkdownIt from 'markdown-it';
+import sanitizeHtml from 'sanitize-html';
+
 
 // Create a new instance of MarkdownIt for parsing Markdown content
 const parser = new MarkdownIt();
@@ -30,7 +32,9 @@ export async function GET(context) {
       site: context.site,
       items: blog.map((post) => ({
         link: `/blog/${post.id}/`,
-        content: getProcessedContent(post.body),
+        content: sanitizeHtml(parser.render(replacePhotoComponent(post.body)), {
+          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
+        }),
         ...post.data,
         pubDate: post.data.date,
       })),
